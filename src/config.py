@@ -21,7 +21,7 @@ TARGET = "readmitted_30d"          # engineered binary target: 1 if '<30' else 0
 RANDOM_STATE = 42
 TEST_SIZE = 0.20
 CV_FOLDS = 5
-PRECISION_FLOOR = 0.15             # minimum precision when tuning threshold for recall
+RECALL_TARGET = 0.50               # minimum recall the deployed threshold must achieve
 
 # --- MLflow ---
 MLFLOW_EXPERIMENT = "readmission-risk"

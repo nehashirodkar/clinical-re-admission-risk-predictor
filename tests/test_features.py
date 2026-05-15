@@ -3,6 +3,7 @@ import pandas as pd
 from src.features.medication import add_medication_features
 from src.features.diagnoses import _categorize, add_diagnosis_features
 from src.features.visits import add_visit_features
+from src.features.interactions import add_interaction_features
 
 
 def test_medication_change_flags():
@@ -29,6 +30,21 @@ def test_diagnosis_columns_replaced():
     out = add_diagnosis_features(df)
     assert "diag_1" not in out.columns
     assert out["diag_1_cat"].iloc[0] == "Diabetes"
+
+
+def test_a1c_change_interaction():
+    df = pd.DataFrame({
+        "A1Cresult": [None, "Norm", ">8", ">7"],
+        "change": ["No", "No", "Ch", "No"],
+        "discharge_disposition_id": [1, 2, 3, 99],
+    })
+    out = add_interaction_features(df)
+    assert out["a1c_change_group"].tolist() == [
+        "no_test", "normal", "high_med_changed", "high_med_unchanged"
+    ]
+    assert out["discharge_group"].tolist() == [
+        "Home", "Transferred", "Transferred", "Other"
+    ]
 
 
 def test_visit_aggregation():

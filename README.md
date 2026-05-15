@@ -42,10 +42,17 @@ and recreated on first run.
 
 ## Results
 
-CV AUC ≈ 0.64, test AUC ≈ 0.63 — consistent with the published ceiling for
-this dataset (Strack et al., 2014). The decision threshold is tuned for
-recall (F2-optimal), reflecting the clinical cost asymmetry of missing a
-readmission.
+CV AUC ≈ 0.64, test AUC ≈ 0.64 — consistent with the published ceiling for
+this dataset (Strack et al., 2014); materially higher numbers on this data
+typically indicate leakage. Engineering the paper's HbA1c × medication-change
+interaction did not raise AUC, which corroborates that ceiling.
+
+The decision threshold implements an explicit clinical rule: **maximize
+precision subject to recall ≥ 0.50**, reflecting the cost asymmetry of
+missing a readmission. At that operating point the held-out test set gives
+recall ≈ 0.50, precision ≈ 0.14. Note this recall is an operating-point
+choice on a fixed model, distinct from the model's intrinsic ranking
+ability (AUC).
 
 ## Project layout
 
