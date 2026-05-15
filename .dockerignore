@@ -1,0 +1,10 @@
+.venv/
+.git/
+data/
+mlruns/
+notebooks/
+tests/
+__pycache__/
+*.pyc
+.claude/
+.ipynb_checkpoints/

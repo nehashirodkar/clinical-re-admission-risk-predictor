@@ -8,7 +8,7 @@ mlruns/
 *.joblib
 
 # Environment
-.venv/
+.venv*/
 venv/
 .env
 __pycache__/

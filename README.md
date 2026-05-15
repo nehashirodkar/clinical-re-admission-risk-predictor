@@ -1,3 +1,13 @@
+---
+title: Clinical Readmission Risk Predictor
+emoji: 🏥
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # Clinical Re-Admission Risk Predictor
 
 Predicts 30-day hospital readmission risk on the UCI Diabetes 130-US Hospitals
