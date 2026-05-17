@@ -20,6 +20,7 @@ RUN pip install --no-cache-dir -r requirements-serve.txt
 COPY src ./src
 COPY dashboard ./dashboard
 COPY models ./models
+COPY .streamlit ./.streamlit
 COPY start.sh .
 RUN chmod +x start.sh && chown -R appuser:appuser /app
 
